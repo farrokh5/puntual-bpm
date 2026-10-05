@@ -1,5 +1,6 @@
 'use client';
 
+import type { ComponentType } from 'react';
 import { motion } from 'framer-motion';
 import { PROBLEMS, SOLUTION_PILLARS } from '../../constants';
 import { useReducedMotion } from '../../hooks';
@@ -221,11 +222,12 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
               >
                 <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500 to-transparent" aria-hidden="true" />
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 mb-4 group-hover:scale-110 transition-transform">
-                    {({ orchestration: GitBranch, decisions: Scale, measurement: BarChart2, integration: Link2 } as any)[pillar.id] && (
-                      ({ orchestration: GitBranch, decisions: Scale, measurement: BarChart2, integration: Link2 } as any)[pillar.id]
-                    )}
-                  </div>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-brand-100 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 mb-4 group-hover:scale-110 transition-transform">
+                  {(() => {
+                    const PillarIcon = ({ orchestration: GitBranch, decisions: Scale, measurement: BarChart2, integration: Link2 } as Record<string, ComponentType<{ className?: string; 'aria-hidden'?: boolean | string }>>)[pillar.id];
+                    return PillarIcon ? <PillarIcon className="w-6 h-6" aria-hidden="true" /> : null;
+                  })()}
+                </div>
                   <h4 className="heading-4 text-surface-950 dark:text-white mb-2">
                     {pillar.title}
                   </h4>
