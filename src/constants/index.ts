@@ -44,6 +44,7 @@ export const NAV_ITEMS = [
   { label: 'Plataforma', href: '#platform' },
   { label: 'Cómo Trabajamos', href: '#process' },
   { label: 'Casos de Éxito', href: '#cases' },
+  { label: 'Agendar llamada', href: '#contact' },
 ] as const;
 
 export const HERO_STATS = [

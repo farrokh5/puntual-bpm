@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, MessageSquare, Shield, CheckCircle, Clock, Sparkles } from 'lucide-react';
 import { useReducedMotion } from '../../hooks';
 
 interface FinalCTAProps {
@@ -9,6 +9,12 @@ interface FinalCTAProps {
   onPrimaryCtaClick: (sectionId: string) => void;
   onSecondaryCtaClick: () => void;
 }
+
+const TRUST_INDICATORS = [
+  { icon: Shield, label: 'Seguridad empresarial', desc: 'ISO 27001, SOC 2, GDPR' },
+  { icon: CheckCircle, label: 'Cumplimiento normativo', desc: 'Ley 27.444, Basel III, LGPD' },
+  { icon: Clock, label: 'Implementación en semanas', desc: 'No meses ni años' },
+] as const;
 
 export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClick }: FinalCTAProps) {
   const reducedMotion = useReducedMotion();
@@ -19,7 +25,7 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
       className={`section relative overflow-hidden ${className}`}
       aria-labelledby="cta-heading"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-600 via-brand-700 to-violet-800" aria-hidden="true" />
+      <div className="absolute inset-0 bg-cta-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid-pattern bg-[size:60px_60px] opacity-10" aria-hidden="true" />
 
@@ -30,13 +36,13 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
         transition={{ duration: reducedMotion ? 0 : 2 }}
         aria-hidden="true"
       >
-        {[...Array(8)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-white/5"
             style={{
-              width: `${Math.random() * 150 + 50}px`,
-              height: `${Math.random() * 150 + 50}px`,
+              width: `${Math.random() * 200 + 80}px`,
+              height: `${Math.random() * 200 + 80}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
             }}
@@ -64,6 +70,7 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
           <motion.span
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium border border-white/20"
           >
+            <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
             ¿Listo para empezar?
           </motion.span>
           <h2
@@ -90,7 +97,7 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Agendar llamada
+            Agendar una llamada
             <motion.span
               className="transition-transform group-hover:translate-x-1"
               whileHover={{ x: 4 }}
@@ -109,6 +116,32 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
           </motion.button>
         </motion.div>
 
+        {/* Trust Indicators */}
+        <motion.div
+          className="grid sm:grid-cols-3 gap-6 mb-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.4 }}
+        >
+          {TRUST_INDICATORS.map((item, index) => (
+            <motion.div
+              key={item.label}
+              className="text-center p-6 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.5 + index * 0.1 }}
+            >
+              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-white/10 flex items-center justify-center text-white">
+                <item.icon className="w-6 h-6" aria-hidden="true" />
+              </div>
+              <h4 className="font-semibold text-white mb-1">{item.label}</h4>
+              <p className="text-sm text-white/60">{item.desc}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Visual Preview */}
         <motion.div
           className="relative aspect-video rounded-2xl bg-gradient-to-br from-brand-900 via-brand-800 to-violet-900 p-1"
           initial={{ opacity: 0, scale: 0.98 }}
@@ -142,25 +175,12 @@ export function FinalCTA({ className = '', onPrimaryCtaClick, onSecondaryCtaClic
           viewport={{ once: true }}
           transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.7 }}
         >
-          <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-            <span>Seguridad empresarial</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-            </svg>
-            <span>Cumplimiento normativo</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-4 h-4 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span>Implementación en semanas</span>
-          </div>
+          {TRUST_INDICATORS.map((item) => (
+            <div key={item.label} className="flex items-center gap-2">
+              <item.icon className="w-4 h-4 text-white/50" aria-hidden="true" />
+              <span>{item.label}</span>
+            </div>
+          ))}
         </motion.div>
       </div>
     </section>

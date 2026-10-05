@@ -38,24 +38,25 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
       ref={navbarRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 dark:bg-surface-950/80 backdrop-blur-xl border-b border-surface-200 dark:border-surface-800 shadow-sm'
+          ? 'bg-white/90 dark:bg-surface-950/90 backdrop-blur-xl border-b border-surface-200 dark:border-surface-800 shadow-sm'
           : 'bg-transparent'
       }`}
       initial={false}
       animate={{ y: 0 }}
       style={{ willChange: 'transform, background-color, box-shadow' }}
+      role="banner"
     >
       <nav className="container" aria-label="Navegación principal">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 lg:h-18 items-center justify-between">
           <motion.div
             className="flex items-center gap-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.1 }}
           >
-            <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-brand-600" aria-hidden="true">
+            <div className="flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-lg bg-brand-600" aria-hidden="true">
               <motion.svg
-                className="w-5 h-5 text-white"
+                className="w-5 h-5 lg:w-6 lg:h-6 text-white"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -70,17 +71,17 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                 <path d="M7 7l5 5 5-5" />
               </motion.svg>
             </div>
-            <span className="font-display text-xl font-bold text-surface-900 dark:text-white">
+            <span className="font-display text-xl lg:text-2xl font-bold text-surface-900 dark:text-white tracking-tight">
               Puntual BPM
             </span>
           </motion.div>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
               <motion.button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                className={`relative px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
                   isActive(item.href)
                     ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30'
                     : 'text-surface-600 dark:text-surface-300 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800'
@@ -94,7 +95,7 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                 {item.label}
                 {isActive(item.href) && (
                   <motion.div
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand-600"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brand-600"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.2 }}
@@ -104,10 +105,21 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
+            <motion.button
+              onClick={() => handleNavClick('#offer')}
+              className="btn-ghost text-sm px-4 py-2"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.2 }}
+            >
+              Conocer la plataforma
+            </motion.button>
             <motion.button
               onClick={() => handleNavClick('#contact')}
-              className="btn-primary"
+              className="btn-primary text-sm px-5 py-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, x: 20 }}
@@ -119,10 +131,11 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-lg text-surface-600 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-800"
+            className="lg:hidden p-2 rounded-lg text-surface-600 dark:text-surface-300 hover:bg-surface-100 dark:hover:bg-surface-800"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -131,7 +144,8 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden overflow-hidden border-t border-surface-200 dark:border-surface-800 bg-white dark:bg-surface-950"
+              id="mobile-menu"
+              className="lg:hidden overflow-hidden border-t border-surface-200 dark:border-surface-800 bg-white dark:bg-surface-950"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -154,6 +168,16 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                     {item.label}
                   </motion.button>
                 ))}
+                <div className="pt-2 border-t border-surface-200 dark:border-surface-800" />
+                <motion.button
+                  onClick={() => handleNavClick('#offer')}
+                  className="w-full btn-secondary"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.15 }}
+                >
+                  Conocer la plataforma
+                </motion.button>
                 <motion.button
                   onClick={() => handleNavClick('#contact')}
                   className="w-full btn-primary mt-2"

@@ -2,7 +2,6 @@ import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
-import { TrustBar } from './components/TrustBar/TrustBar';
 import { ProblemSection } from './components/ProblemSection/ProblemSection';
 import { ValueProposition } from './components/ValueProposition/ValueProposition';
 import { WhyPuntual } from './components/WhyPuntual/WhyPuntual';
@@ -64,7 +63,6 @@ function App() {
 
       <main id="main-content" className="pt-16">
         <Hero onCtaClick={handlePrimaryCtaClick} />
-        <TrustBar />
         <ProblemSection />
         <ValueProposition />
         <WhyPuntual />

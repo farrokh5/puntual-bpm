@@ -31,10 +31,10 @@ const TwitterIcon = () => (
 type SocialIcon = LucideIcon | (() => React.ReactElement);
 
 const SOCIAL_LINKS: readonly { icon: SocialIcon; href: string; label: string }[] = [
-  { icon: GithubIcon, href: '#', label: 'GitHub' },
-  { icon: LinkedInIcon, href: '#', label: 'LinkedIn' },
-  { icon: TwitterIcon, href: '#', label: 'Twitter' },
-  { icon: Mail, href: '#', label: 'Email' },
+  { icon: LinkedInIcon, href: 'https://linkedin.com/company/puntualbpm', label: 'LinkedIn' },
+  { icon: TwitterIcon, href: 'https://twitter.com/puntualbpm', label: 'Twitter' },
+  { icon: GithubIcon, href: 'https://github.com/puntualbpm', label: 'GitHub' },
+  { icon: Mail, href: `mailto:${COMPANY_INFO.email}`, label: 'Email' },
 ];
 
 export function Footer({ className = '' }: FooterProps) {
@@ -44,7 +44,7 @@ export function Footer({ className = '' }: FooterProps) {
   return (
     <footer
       id="footer"
-      className={`bg-surface-950 dark:bg-surface-950 text-surface-300 dark:text-surface-400 ${className}`}
+      className={`bg-surface-950 text-surface-300 ${className}`}
       role="contentinfo"
     >
       <div className="container py-12 lg:py-16">
@@ -65,16 +65,18 @@ export function Footer({ className = '' }: FooterProps) {
               </div>
               <span className="font-display text-xl font-bold text-white">{COMPANY_INFO.name}</span>
             </div>
-            <p className="body text-surface-400 dark:text-surface-500 mb-6 max-w-xs">
+            <p className="body text-surface-400 mb-6 max-w-xs">
               {COMPANY_INFO.description}
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {SOCIAL_LINKS.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg bg-surface-800 dark:bg-surface-800 flex items-center justify-center text-surface-400 dark:text-surface-500 hover:bg-brand-600 hover:text-white transition-colors"
+                  className="w-10 h-10 rounded-lg bg-surface-800 flex items-center justify-center text-surface-400 hover:bg-brand-600 hover:text-white transition-colors"
                   aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, rotate: 3 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -99,7 +101,7 @@ export function Footer({ className = '' }: FooterProps) {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-surface-400 dark:text-surface-500 hover:text-white transition-colors"
+                    className="text-surface-400 hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>
@@ -121,7 +123,7 @@ export function Footer({ className = '' }: FooterProps) {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-surface-400 dark:text-surface-500 hover:text-white transition-colors"
+                    className="text-surface-400 hover:text-white transition-colors"
                   >
                     {link.label}
                   </a>
@@ -137,7 +139,7 @@ export function Footer({ className = '' }: FooterProps) {
             transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.3 }}
           >
             <h3 className="font-semibold text-white mb-4">Contacto</h3>
-            <address className="not-italic space-y-3 text-surface-400 dark:text-surface-500">
+            <address className="not-italic space-y-3 text-surface-400">
               <p>{COMPANY_INFO.location}</p>
               <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors">
                 {COMPANY_INFO.email}
@@ -156,12 +158,12 @@ export function Footer({ className = '' }: FooterProps) {
           viewport={{ once: true }}
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.4 }}
         >
-          <p className="text-sm text-surface-500 dark:text-surface-500">
+          <p className="text-sm text-surface-500">
             © {currentYear} {COMPANY_INFO.name}. Todos los derechos reservados.
           </p>
-          <div className="flex items-center gap-6 text-sm text-surface-500 dark:text-surface-500">
+          <div className="flex items-center gap-6 text-sm text-surface-500">
             <span>Fundada en {COMPANY_INFO.founded} · Hecho con precisión en Argentina</span>
-            <motion.div className="w-4 h-4 rounded-full bg-brand-500 animate-pulse-slow" aria-label="Latido" />
+            <motion.div className="w-3 h-3 rounded-full bg-brand-500 animate-pulse-slow" aria-label="Latido" />
           </div>
         </motion.div>
       </div>

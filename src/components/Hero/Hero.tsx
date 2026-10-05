@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
 import { ProcessScene } from './ProcessScene/ProcessScene';
 import { HERO_STATS } from '../../constants';
 import { useReducedMotion } from '../../hooks';
@@ -16,10 +16,10 @@ export function Hero({ onCtaClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-surface-950"
       aria-labelledby="hero-title"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(99,_123,_240,_0.06)_0%,_transparent_70%)]" aria-hidden="true" />
+      <div className="absolute inset-0 bg-hero-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px] opacity-30" aria-hidden="true" />
 
       <motion.div
@@ -42,35 +42,35 @@ export function Hero({ onCtaClick }: HeroProps) {
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.2 }}
             >
               <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-              30+ años de experiencia
+              30+ años construyendo software para procesos críticos
             </motion.span>
 
             <h1
               id="hero-title"
-              className="heading-1 mt-5 text-surface-950 dark:text-white leading-[1.05]"
+              className="heading-1 mt-5 text-surface-950 dark:text-white leading-[1.05] text-balance"
             >
-              <span className="block">Software a medida.</span>
-              <span className="block text-gradient">Procesos que evolucionan.</span>
+              <span className="block">Desarrollo a medida.</span>
+              <span className="block text-gradient">Puntual BPM como core.</span>
             </h1>
 
             <motion.p
-              className="body-lg mt-6 max-w-xl text-surface-600 dark:text-surface-300 leading-relaxed"
+              className="body-lg mt-6 max-w-xl text-surface-600 dark:text-surface-300 leading-relaxed text-balance"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.3 }}
             >
-              Combinamos desarrollo a medida, automatización de procesos y una plataforma tecnológica propia para convertir desafíos operativos en soluciones escalables.
+              No vendemos software genérico. Construimos soluciones únicas para tus desafíos, usando nuestra plataforma BPM propietaria y 30+ años de experiencia como base tecnológica.
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-3 mt-8"
+              className="flex flex-col sm:flex-row gap-3 mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.4 }}
             >
               <motion.button
                 onClick={() => onCtaClick('contact')}
-                className="btn-primary group"
+                className="btn-primary group w-full sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -84,16 +84,16 @@ export function Hero({ onCtaClick }: HeroProps) {
               </motion.button>
               <motion.button
                 onClick={() => onCtaClick('offer')}
-                className="btn-secondary"
+                className="btn-secondary w-full sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Conocer Puntual BPM
+                Conocer la plataforma
               </motion.button>
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap gap-8 mt-12"
+              className="flex flex-wrap gap-6 mt-10 pt-6 border-t border-surface-200 dark:border-surface-800"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.5 }}
@@ -101,16 +101,13 @@ export function Hero({ onCtaClick }: HeroProps) {
               {HERO_STATS.map((stat) => (
                 <div key={stat.label} className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                      <path d="M12 2v20M17 7H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
-                      <path d="M7 7l5 5 5-5" />
-                    </svg>
+                    <CheckCircle className="w-5 h-5" aria-hidden="true" />
                   </div>
                   <div>
-                    <div className="text-2xl font-display font-bold text-surface-950 dark:text-white">
+                    <div className="stat-value text-2xl sm:text-3xl">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-surface-500 dark:text-surface-400">
+                    <div className="stat-label">
                       {stat.label}
                     </div>
                   </div>
@@ -125,7 +122,9 @@ export function Hero({ onCtaClick }: HeroProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ willChange: 'transform, opacity' }}
+            aria-label="Visualización interactiva de procesos de negocio"
           >
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 via-transparent to-violet-500/5" aria-hidden="true" />
             <ProcessScene />
           </motion.div>
         </div>
@@ -136,10 +135,10 @@ export function Hero({ onCtaClick }: HeroProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: reducedMotion ? 0 : 0.8, delay: 1.2 }}
+        aria-hidden="true"
       >
         <motion.div
           className="w-5 h-9 border-2 border-surface-300 dark:border-surface-700 rounded-full flex justify-center pt-2"
-          aria-hidden="true"
         >
           <motion.div
             className="w-1.5 h-1.5 bg-surface-400 dark:bg-surface-500 rounded-full"
