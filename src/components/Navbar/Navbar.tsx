@@ -107,26 +107,15 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
 
           <div className="hidden lg:flex items-center gap-3">
             <motion.button
-              onClick={() => handleNavClick('#offer')}
-              className="btn-ghost text-sm px-4 py-2"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.2 }}
-            >
-              Conocer la plataforma
-            </motion.button>
-            <motion.button
               onClick={() => handleNavClick('#contact')}
               className="btn-primary text-sm px-5 py-2"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.3 }}
+              transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.2 }}
             >
-              Agendar llamada
+              Agendar conversación
             </motion.button>
           </div>
 
@@ -170,22 +159,13 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                 ))}
                 <div className="pt-2 border-t border-surface-200 dark:border-surface-800" />
                 <motion.button
-                  onClick={() => handleNavClick('#offer')}
-                  className="w-full btn-secondary"
+                  onClick={() => handleNavClick('#contact')}
+                  className="w-full btn-primary"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.15 }}
                 >
-                  Conocer la plataforma
-                </motion.button>
-                <motion.button
-                  onClick={() => handleNavClick('#contact')}
-                  className="w-full btn-primary mt-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.2 }}
-                >
-                  Agendar llamada
+                  Agendar conversación
                 </motion.button>
               </div>
             </motion.div>

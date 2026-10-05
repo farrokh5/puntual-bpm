@@ -4,11 +4,26 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { CASE_STUDIES } from '../../constants';
 import { useReducedMotion } from '../../hooks';
-import { BarChart2, Zap, Shield, Award, ChevronRight } from 'lucide-react';
+import { BarChart2, Zap, Shield, Award, ChevronRight, CheckCircle, TrendingUp, Clock, Link2, Code, FileText } from 'lucide-react';
 
 interface CaseStudiesProps {
   className?: string;
 }
+
+const RESULT_ICONS = {
+  'Disponibilidad': CheckCircle,
+  'Integraciones activas': Link2,
+  'Tiempo de deployment': Clock,
+  'Cumplimiento normativo': Shield,
+  'Tiempo de procesamiento': Clock,
+  'Costos operativos': TrendingUp,
+  'NPS clientes': TrendingUp,
+  'Papel': FileText,
+  'Trazabilidad de actos': CheckCircle,
+  'Tiempo de adjudicación': Clock,
+  'Cumplimiento legal': Shield,
+  'Innovación pública': Award,
+} as const;
 
 export function CaseStudies({ className = '' }: CaseStudiesProps) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -19,18 +34,23 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
     setActiveIndex(index);
   };
 
+  const getResultIcon = (label: string) => {
+    return RESULT_ICONS[label as keyof typeof RESULT_ICONS] || BarChart2;
+  };
+
   return (
     <section
       id="cases"
-      className={`section relative bg-surface-50 dark:bg-surface-900/50 ${className}`}
+      className={`section relative bg-white dark:bg-surface-950 ${className}`}
       aria-labelledby="cases-heading"
     >
-      <div className="absolute inset-0 bg-hero-gradient opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(99,_123,_240,_0.03)_0%,_transparent_60%)]" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px] opacity-30" aria-hidden="true" />
 
       <div className="container relative z-10">
+        {/* Header */}
         <motion.div
-          className="section-header"
+          className="section-header max-w-4xl"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
@@ -48,14 +68,15 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
           </p>
         </motion.div>
 
+        {/* Main Case Display - Split Layout */}
         <motion.div
-          className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+          className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reducedMotion ? 0 : 0.7, delay: 0.2 }}
+          transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.2 }}
         >
-          {/* Case Details */}
-          <div className="space-y-6 lg:sticky lg:top-24">
+          {/* Left: Case Narrative */}
+          <div className="space-y-8 lg:sticky lg:top-24 lg:pr-8">
             <motion.div
               className="flex items-center gap-3 px-4 py-2 rounded-lg bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-medium border border-brand-200 dark:border-brand-800 w-fit"
               initial={{ opacity: 0, x: -20 }}
@@ -67,7 +88,7 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
             </motion.div>
 
             <motion.h3
-              className="heading-2 text-surface-950 dark:text-white"
+              className="heading-2 text-surface-950 dark:text-white leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.2 }}
@@ -81,60 +102,66 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.3 }}
             >
-              <div className="card-elevated p-6">
+              <div className="card-elevated p-6 border-l-4 border-brand-500">
                 <h4 className="font-semibold text-surface-950 dark:text-white mb-3 flex items-center gap-2">
                   <Zap className="w-5 h-5 text-brand-500" aria-hidden="true" />
                   El desafío
                 </h4>
-                <p className="body text-surface-600 dark:text-surface-300">{currentCase.challenge}</p>
+                <p className="body text-surface-600 dark:text-surface-300 leading-relaxed">{currentCase.challenge}</p>
               </div>
-              <div className="card-elevated p-6">
+              <div className="card-elevated p-6 border-l-4 border-emerald-500">
                 <h4 className="font-semibold text-surface-950 dark:text-white mb-3 flex items-center gap-2">
                   <Shield className="w-5 h-5 text-emerald-500" aria-hidden="true" />
                   Nuestra solución
                 </h4>
-                <p className="body text-surface-600 dark:text-surface-300">{currentCase.solution}</p>
+                <p className="body text-surface-600 dark:text-surface-300 leading-relaxed">{currentCase.solution}</p>
               </div>
-              <div className="card-elevated p-6">
+              <div className="card-elevated p-6 border-l-4 border-violet-500">
                 <h4 className="font-semibold text-surface-950 dark:text-white mb-3 flex items-center gap-2">
                   <BarChart2 className="w-5 h-5 text-violet-500" aria-hidden="true" />
-                  Arquitectura
+                  Arquitectura técnica
                 </h4>
-                <p className="body text-surface-600 dark:text-surface-300 font-mono text-sm bg-surface-100 dark:bg-surface-800 p-4 rounded-lg">{currentCase.architecture}</p>
+                <p className="body text-surface-600 dark:text-surface-300 font-mono text-sm bg-surface-100 dark:bg-surface-800 p-4 rounded-lg leading-relaxed">{currentCase.architecture}</p>
               </div>
             </motion.div>
 
+            {/* Results - Prominent metrics */}
             <motion.div
               className="grid grid-cols-2 gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.4 }}
             >
-              {currentCase.results.map((result, i) => (
-                <motion.div
-                  key={i}
-                  className="card-elevated p-4"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: reducedMotion ? 0 : 0.4, delay: 0.5 + i * 0.1 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400">
-                      <BarChart2 className="w-5 h-5" aria-hidden="true" />
-                    </div>
-                    <div>
-                      <div className="text-2xl font-display font-bold text-surface-950 dark:text-white">
-                        {result.metric as string}
+              {currentCase.results.map((result, i) => {
+                const IconComponent = getResultIcon(result.label);
+                return (
+                  <motion.div
+                    key={i}
+                    className="card-elevated p-5 relative overflow-hidden group"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: reducedMotion ? 0 : 0.4, delay: 0.5 + i * 0.1 }}
+                  >
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-brand-500/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                    <div className="relative flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
+                        <IconComponent className="w-6 h-6" aria-hidden="true" />
                       </div>
-                      <div className="text-sm text-surface-500 dark:text-surface-400">
-                        {result.label}
+                      <div>
+                        <div className="text-3xl font-display font-bold text-surface-950 dark:text-white leading-none">
+                          {result.metric as string}
+                        </div>
+                        <div className="text-sm text-surface-500 dark:text-surface-400 mt-1">
+                          {result.label}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
 
+            {/* Tech Stack */}
             <motion.div
               className="flex flex-wrap gap-2"
               initial={{ opacity: 0 }}
@@ -165,13 +192,14 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
             </motion.button>
           </div>
 
-          {/* Visual Representation */}
+          {/* Right: Visual Evidence */}
           <motion.div
-            className="relative"
+            className="relative space-y-6"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.7, delay: 0.3 }}
+            transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.3 }}
           >
+            {/* Dashboard Preview */}
             <div className="aspect-video rounded-2xl bg-gradient-to-br from-brand-900 via-brand-800 to-violet-900 p-1">
               <div className="w-full h-full rounded-xl bg-surface-950/80 backdrop-blur-xl border border-surface-800 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(99,_123,_240,_0.15)_0%,_transparent_70%)]" aria-hidden="true" />
@@ -192,6 +220,7 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
               </div>
             </div>
 
+            {/* Key Metric Callout */}
             <motion.div
               className="absolute bottom-6 right-6 bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20"
               animate={{ y: [0, -5, 0] }}
@@ -202,6 +231,28 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
                 <div className="text-xs text-white/70">Disponibilidad</div>
               </div>
             </motion.div>
+
+            {/* Architecture Visual */}
+            <div className="rounded-2xl bg-surface-50 dark:bg-surface-900/50 border border-surface-200 dark:border-surface-800 p-6">
+              <h5 className="font-semibold text-surface-950 dark:text-white mb-4 flex items-center gap-2">
+                <Code className="w-5 h-5 text-brand-500" aria-hidden="true" />
+                Stack técnico
+              </h5>
+              <div className="space-y-3">
+                {currentCase.techStack.map((tech, i) => (
+                  <motion.div
+                    key={tech}
+                    className="flex items-center justify-between p-3 bg-white dark:bg-surface-900 rounded-lg border border-surface-200 dark:border-surface-700"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.8 + i * 0.08 }}
+                  >
+                    <span className="font-mono text-sm text-surface-950 dark:text-white">{tech}</span>
+                    <span className="text-xs text-surface-500 dark:text-surface-400 uppercase tracking-wider">Tecnología base</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -232,9 +283,9 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
           ))}
         </motion.div>
 
-        {/* All Cases Summary */}
+        {/* All Cases Summary - Editorial Grid */}
         <motion.div
-          className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="mt-16 lg:mt-20 grid lg:grid-cols-3 gap-6"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -243,46 +294,56 @@ export function CaseStudies({ className = '' }: CaseStudiesProps) {
           {CASE_STUDIES.map((caseStudy, index) => (
             <motion.article
               key={caseStudy.id}
-              className="card-elevated p-6 group"
+              className="card-elevated p-6 group relative overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.7 + index * 0.1 }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
-                  {caseStudy.industry}
-                </span>
-                <Award className="w-5 h-5 text-amber-500" aria-hidden="true" />
-              </div>
-              <h4 className="heading-4 text-surface-950 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                {caseStudy.title}
-              </h4>
-              <p className="body-sm text-surface-600 dark:text-surface-400 mb-4 line-clamp-2">
-                {caseStudy.challenge}
-              </p>
-              <div className="flex items-center gap-4 text-sm">
-                <div className="flex items-center gap-1 text-surface-600 dark:text-surface-400">
-                  <Zap className="w-4 h-4 text-brand-500" aria-hidden="true" />
-                  <span>{caseStudy.results[0]?.label}</span>
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
+              <div className="relative z-10">
+                <div className="flex items-start justify-between mb-4">
+                  <span className="px-3 py-1 rounded-full text-xs font-medium bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-800">
+                    {caseStudy.industry}
+                  </span>
+                  <Award className="w-5 h-5 text-amber-500" aria-hidden="true" />
                 </div>
-                <div className="flex items-center gap-1 text-surface-600 dark:text-surface-400">
-                  <BarChart2 className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                  <span className="font-semibold text-surface-950 dark:text-white">{caseStudy.results[0]?.metric}</span>
+                <h4 className="heading-4 text-surface-950 dark:text-white mb-3 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                  {caseStudy.title}
+                </h4>
+                <p className="body-sm text-surface-600 dark:text-surface-400 mb-5 line-clamp-2">
+                  {caseStudy.challenge}
+                </p>
+                
+                {/* Key Result Highlight */}
+                <div className="mb-4 p-4 bg-brand-50 dark:bg-brand-900/20 rounded-xl border border-brand-200 dark:border-brand-800">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400">
+                      <TrendingUp className="w-5 h-5" aria-hidden="true" />
+                    </div>
+                    <div>
+                      <div className="text-2xl font-display font-bold text-brand-700 dark:text-brand-300">
+                        {caseStudy.results[0]?.metric}
+                      </div>
+                      <div className="text-xs text-brand-600 dark:text-brand-400">
+                        {caseStudy.results[0]?.label}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-4 pt-4 border-t border-surface-200 dark:border-surface-800 flex items-center justify-between">
-                <div className="flex flex-wrap gap-1.5">
-                  {caseStudy.techStack.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="px-2 py-0.5 text-xs bg-surface-100 dark:bg-surface-800 text-surface-500 dark:text-surface-400 rounded">
+
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {caseStudy.techStack.slice(0, 4).map((tech, i) => (
+                    <span key={i} className="px-2 py-1 text-xs bg-surface-100 dark:bg-surface-800 text-surface-500 dark:text-surface-400 rounded">
                       {tech}
                     </span>
                   ))}
-                  {caseStudy.techStack.length > 3 && (
-                    <span className="px-2 py-0.5 text-xs text-surface-400">+{caseStudy.techStack.length - 3} más</span>
+                  {caseStudy.techStack.length > 4 && (
+                    <span className="px-2 py-1 text-xs text-surface-400">+{caseStudy.techStack.length - 4} más</span>
                   )}
                 </div>
-                <button className="text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center gap-1">
+                
+                <button className="w-full text-sm font-medium text-brand-600 dark:text-brand-400 hover:text-brand-700 dark:hover:text-brand-300 flex items-center justify-center gap-1 py-2">
                   Ver detalles
                   <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>

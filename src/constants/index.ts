@@ -40,11 +40,11 @@ export type { CaseStudy as CaseStudyType };
 
 export const NAV_ITEMS = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Nuestra Oferta', href: '#offer' },
+  { label: 'El desafío', href: '#problem-story' },
   { label: 'Plataforma', href: '#platform' },
-  { label: 'Cómo Trabajamos', href: '#process' },
-  { label: 'Casos de Éxito', href: '#cases' },
-  { label: 'Agendar llamada', href: '#contact' },
+  { label: 'Cómo trabajamos', href: '#process' },
+  { label: 'Casos de éxito', href: '#cases' },
+  { label: 'Por qué Puntual', href: '#why-puntual' },
 ] as const;
 
 export const HERO_STATS = [

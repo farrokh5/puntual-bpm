@@ -2,21 +2,17 @@ import React, { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from './components/Navbar/Navbar';
 import { Hero } from './components/Hero/Hero';
-import { ProblemSection } from './components/ProblemSection/ProblemSection';
-import { ValueProposition } from './components/ValueProposition/ValueProposition';
-import { WhyPuntual } from './components/WhyPuntual/WhyPuntual';
-import { WhatIsBPM } from './components/WhatIsBPM/WhatIsBPM';
-import { TechnologyIntegration } from './components/TechnologyIntegration/TechnologyIntegration';
+import { ProblemStory } from './components/ProblemStory/ProblemStory';
+import { PlatformShowcase } from './components/PlatformShowcase/PlatformShowcase';
 import { Methodology } from './components/Methodology/Methodology';
 import { CaseStudies } from './components/CaseStudies/CaseStudies';
-import { BusinessOutcomes } from './components/BusinessOutcomes/BusinessOutcomes';
+import { WhyPuntual } from './components/WhyPuntual/WhyPuntual';
 import { FinalCTA } from './components/FinalCTA/FinalCTA';
-import { PlatformArchitecture } from './components/PlatformArchitecture/PlatformArchitecture';
 import { ScheduleCallForm } from './components/ScheduleCallForm/ScheduleCallForm';
 import { Footer } from './components/Footer/Footer';
 import { useActiveSection } from './hooks';
 
-const SECTION_IDS = ['hero', 'problem', 'offer', 'why-puntual', 'what-is-bpm', 'platform', 'technology', 'process', 'cases', 'outcomes', 'contact', 'schedule-call'];
+const SECTION_IDS = ['hero', 'problem-story', 'platform', 'process', 'cases', 'why-puntual', 'contact', 'schedule-call'];
 
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -63,20 +59,15 @@ function App() {
 
       <main id="main-content" className="pt-16">
         <Hero onCtaClick={handlePrimaryCtaClick} />
-        <ProblemSection />
-        <ValueProposition />
-        <WhyPuntual />
-        <WhatIsBPM />
-        <PlatformArchitecture />
-        <TechnologyIntegration />
+        <ProblemStory />
+        <PlatformShowcase />
         <Methodology />
         <CaseStudies />
-        <BusinessOutcomes />
+        <WhyPuntual />
         <FinalCTA
           onPrimaryCtaClick={handlePrimaryCtaClick}
           onSecondaryCtaClick={handleSecondaryCtaClick}
         />
-        {/* Formulario de agenda de llamada */}
         <ScheduleCallForm />
       </main>
 

@@ -1,9 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles, Shield, Award } from 'lucide-react';
 import { ProcessScene } from './ProcessScene/ProcessScene';
-import { HERO_STATS } from '../../constants';
 import { useReducedMotion } from '../../hooks';
 
 interface HeroProps {
@@ -22,39 +21,34 @@ export function Hero({ onCtaClick }: HeroProps) {
       <div className="absolute inset-0 bg-hero-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px] opacity-30" aria-hidden="true" />
 
-      <motion.div
-        className="container relative z-10 pt-20 pb-16 lg:pt-28 lg:pb-24"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: reducedMotion ? 0 : 0.8 }}
-      >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+      <div className="container relative z-10 pt-20 pb-16 lg:pt-28 lg:pb-24">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
           <motion.div
-            className="max-w-xl pr-8 lg:pr-12"
+            className="max-w-2xl pr-8 lg:pr-12"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: reducedMotion ? 0 : 0.7, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <motion.span
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-medium border border-brand-200 dark:border-brand-800"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-medium border border-brand-200 dark:border-brand-800"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.2 }}
             >
-              <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+              <Sparkles className="w-4 h-4" aria-hidden="true" />
               30+ años construyendo software para procesos críticos
             </motion.span>
 
             <h1
               id="hero-title"
-              className="heading-1 mt-5 text-surface-950 dark:text-white leading-[1.05] text-balance"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-[-0.03em] leading-[1.02] text-surface-950 dark:text-white text-balance mt-6"
             >
               <span className="block">Desarrollo a medida.</span>
-              <span className="block text-gradient">Puntual BPM como core.</span>
+              <span className="block bg-gradient-to-r from-brand-600 via-brand-500 to-violet-600 bg-clip-text text-transparent">Puntual BPM como core.</span>
             </h1>
 
             <motion.p
-              className="body-lg mt-6 max-w-xl text-surface-600 dark:text-surface-300 leading-relaxed text-balance"
+              className="text-lg sm:text-xl text-surface-600 dark:text-surface-300 leading-relaxed text-balance mt-8 max-w-xl"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.3 }}
@@ -63,18 +57,18 @@ export function Hero({ onCtaClick }: HeroProps) {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-3 mt-8"
+              className="flex flex-col sm:flex-row gap-4 mt-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.4 }}
             >
               <motion.button
                 onClick={() => onCtaClick('contact')}
-                className="btn-primary group w-full sm:w-auto"
+                className="btn-primary group w-full sm:w-auto text-base px-7 py-3.5"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Agendar una llamada
+                Agendar una conversación
                 <motion.span
                   className="transition-transform group-hover:translate-x-1"
                   whileHover={{ x: 4 }}
@@ -83,44 +77,56 @@ export function Hero({ onCtaClick }: HeroProps) {
                 </motion.span>
               </motion.button>
               <motion.button
-                onClick={() => onCtaClick('offer')}
-                className="btn-secondary w-full sm:w-auto"
+                onClick={() => onCtaClick('platform')}
+                className="btn-secondary w-full sm:w-auto text-base px-7 py-3.5"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Conocer la plataforma
+                Ver la plataforma
               </motion.button>
             </motion.div>
 
             <motion.div
-              className="flex flex-wrap gap-6 mt-10 pt-6 border-t border-surface-200 dark:border-surface-800"
+              className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-surface-200 dark:border-surface-800"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.5 }}
             >
-              {HERO_STATS.map((stat) => (
-                <div key={stat.label} className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
-                    <CheckCircle className="w-5 h-5" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <div className="stat-value text-2xl sm:text-3xl">
-                      {stat.value}
-                    </div>
-                    <div className="stat-label">
-                      {stat.label}
-                    </div>
-                  </div>
+              <div className="flex items-center gap-3" key="exp">
+                <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
+                  <Award className="w-6 h-6" aria-hidden="true" />
                 </div>
-              ))}
+                <div>
+                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">30+</div>
+                  <div className="text-sm text-surface-500 dark:text-surface-400">Años de experiencia</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3" key="projects">
+                <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
+                  <CheckCircle className="w-6 h-6" aria-hidden="true" />
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">500+</div>
+                  <div className="text-sm text-surface-500 dark:text-surface-400">Proyectos entregados</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3" key="retention">
+                <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 flex-shrink-0">
+                  <Shield className="w-6 h-6" aria-hidden="true" />
+                </div>
+                <div>
+                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">98%</div>
+                  <div className="text-sm text-surface-500 dark:text-surface-400">Clientes recurrentes</div>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
           <motion.div
-            className="relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-800"
+            className="relative aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-800 hidden lg:block"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            transition={{ duration: reducedMotion ? 0 : 0.9, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ willChange: 'transform, opacity' }}
             aria-label="Visualización interactiva de procesos de negocio"
           >
@@ -128,21 +134,21 @@ export function Hero({ onCtaClick }: HeroProps) {
             <ProcessScene />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:block"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: reducedMotion ? 0 : 0.8, delay: 1.2 }}
+        transition={{ duration: reducedMotion ? 0 : 0.8, delay: 1.4 }}
         aria-hidden="true"
       >
         <motion.div
-          className="w-5 h-9 border-2 border-surface-300 dark:border-surface-700 rounded-full flex justify-center pt-2"
+          className="w-6 h-10 border-2 border-surface-300 dark:border-surface-700 rounded-full flex justify-center pt-3"
         >
           <motion.div
-            className="w-1.5 h-1.5 bg-surface-400 dark:bg-surface-500 rounded-full"
-            animate={{ y: [0, 8, 0] }}
+            className="w-2 h-2 bg-surface-400 dark:bg-surface-500 rounded-full"
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
