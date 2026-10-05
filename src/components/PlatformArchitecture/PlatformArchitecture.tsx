@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef } from 'react';
 import { GitBranch, Layout, Scale, Link2, CheckSquare, BarChart2, FileText, Shield, Sparkles } from 'lucide-react';
 
 interface PlatformArchitectureProps {
@@ -18,50 +18,8 @@ const CAPABILITIES = [
   { id: 'security', title: 'Seguridad Empresarial', description: 'RBAC, SSO, auditoría completa, ISO 27001.', category: 'Seguridad', icon: Shield },
 ] as const;
 
-function polarToCartesian(cx: number, cy: number, radius: number, angleDeg: number) {
-  const angleRad = (angleDeg - 90) * Math.PI / 180;
-  return { x: cx + radius * Math.cos(angleRad), y: cy + radius * Math.sin(angleRad) };
-}
-
 export function PlatformArchitecture({ className = '' }: PlatformArchitectureProps) {
-  const [hoveredCapability, setHoveredCapability] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [containerSize, setContainerSize] = useState({ width: 800, height: 600 });
-
-  const handleResize = () => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setContainerSize({ width: rect.width, height: rect.height });
-    }
-  };
-
-  useEffect(() => {
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const centerX = containerSize.width / 2;
-  const centerY = containerSize.height / 2;
-
-  const nodes = useMemo(() =>
-    CAPABILITIES.map(cap => ({
-      ...cap,
-      pos: polarToCartesian(centerX, centerY, cap.id === 'security' ? 140 : 170, {
-        'bpmn-engine': -135,
-        'low-code-forms': -45,
-        'rules-engine': 45,
-        'integration-hub': 135,
-        'task-management': 180,
-        'analytics': 90,
-        'document-mgmt': -90,
-        security: -180,
-      }[cap.id] || 0),
-    })),
-    [centerX, centerY]
-  );
-
-  const isMobile = window.innerWidth < 768;
 
   return (
     <section
