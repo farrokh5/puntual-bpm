@@ -25,14 +25,12 @@ jobs:
         with:
           node-version: '22'
           cache: 'npm'
-          cache-dependency-path: puntual-bpm/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ./puntual-bpm
         run: npm ci
 
       - name: Build
-        working-directory: ./puntual-bpm
         run: npm run build
 
       - name: Deploy to Azure Static Web Apps
@@ -42,7 +40,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
-          app_location: "/puntual-bpm"
+          app_location: "/"
           output_location: "dist"
           skip_app_build: true
 
