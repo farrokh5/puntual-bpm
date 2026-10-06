@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Sparkles, Shield, Award } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { ProcessScene } from './ProcessScene/ProcessScene';
 import { useReducedMotion } from '../../hooks';
 
@@ -15,14 +15,14 @@ export function Hero({ onCtaClick }: HeroProps) {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-surface-950"
+      className="relative flex items-center overflow-hidden bg-white dark:bg-surface-950"
       aria-labelledby="hero-title"
     >
       <div className="absolute inset-0 bg-hero-gradient" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid-pattern bg-[size:80px_80px] opacity-30" aria-hidden="true" />
 
-      <div className="container relative z-10 pt-20 pb-16 lg:pt-28 lg:pb-24">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-4rem)]">
+      <div className="container relative z-10 pt-28 pb-20 lg:pt-36 lg:pb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
             className="max-w-2xl pr-8 lg:pr-12"
             initial={{ opacity: 0, y: 30 }}
@@ -84,41 +84,6 @@ export function Hero({ onCtaClick }: HeroProps) {
               >
                 Ver la plataforma
               </motion.button>
-            </motion.div>
-
-            <motion.div
-              className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-surface-200 dark:border-surface-800"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.5 }}
-            >
-              <div className="flex items-center gap-3" key="exp">
-                <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center text-brand-600 dark:text-brand-400 flex-shrink-0">
-                  <Award className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <div>
-                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">30+</div>
-                  <div className="text-sm text-surface-500 dark:text-surface-400">Años de experiencia</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3" key="projects">
-                <div className="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 flex-shrink-0">
-                  <CheckCircle className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <div>
-                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">500+</div>
-                  <div className="text-sm text-surface-500 dark:text-surface-400">Proyectos entregados</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3" key="retention">
-                <div className="w-12 h-12 rounded-xl bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center text-violet-600 dark:text-violet-400 flex-shrink-0">
-                  <Shield className="w-6 h-6" aria-hidden="true" />
-                </div>
-                <div>
-                  <div className="text-3xl font-display font-bold text-surface-950 dark:text-white">98%</div>
-                  <div className="text-sm text-surface-500 dark:text-surface-400">Clientes recurrentes</div>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
 
