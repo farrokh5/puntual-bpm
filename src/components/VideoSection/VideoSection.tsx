@@ -94,11 +94,6 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: reducedMotion ? 0 : 0.6 }}
         >
-          <motion.span
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-sm font-medium border border-brand-200 dark:border-brand-800"
-          >
-            Video explicativo
-          </motion.span>
           <h2
             id="video-heading"
             className="heading-2 mt-4 text-surface-950 dark:text-white"
@@ -194,36 +189,6 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
                 </button>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="mt-10 grid sm:grid-cols-3 gap-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.4 }}
-        >
-          <div className="p-6 bg-white dark:bg-surface-900 rounded-xl border border-surface-200 dark:border-surface-800">
-            <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center mx-auto mb-3 text-brand-600 dark:text-brand-400">
-              <Play className="w-6 h-6" aria-hidden="true" />
-            </div>
-            <h3 className="font-semibold text-surface-950 dark:text-white mb-1">Explicación clara</h3>
-            <p className="text-sm text-surface-600 dark:text-surface-400">Conceptos BPM sin tecnicismos</p>
-          </div>
-          <div className="p-6 bg-white dark:bg-surface-900 rounded-xl border border-surface-200 dark:border-surface-800">
-            <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center mx-auto mb-3 text-brand-600 dark:text-brand-400">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path d="M12 2v20M17 7H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M7 7l5 5 5-5"/></svg>
-            </div>
-            <h3 className="font-semibold text-surface-950 dark:text-white mb-1">Casos reales</h3>
-            <p className="text-sm text-surface-600 dark:text-surface-400">Ejemplos de automatización</p>
-          </div>
-          <div className="p-6 bg-white dark:bg-surface-900 rounded-xl border border-surface-200 dark:border-surface-800">
-            <div className="w-12 h-12 rounded-xl bg-brand-100 dark:bg-brand-900/30 flex items-center justify-center mx-auto mb-3 text-brand-600 dark:text-brand-400">
-              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-            </div>
-            <h3 className="font-semibold text-surface-950 dark:text-white mb-1">Próximos pasos</h3>
-            <p className="text-sm text-surface-600 dark:text-surface-400">Cómo empezar con Puntual BPM</p>
           </div>
         </motion.div>
       </div>
