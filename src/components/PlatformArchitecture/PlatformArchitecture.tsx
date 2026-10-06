@@ -128,7 +128,7 @@ const CAPABILITIES = [
   { 
     id: 'security', 
     title: 'Seguridad Empresarial', 
-    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo, certificación ISO 27001.',
+    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo.',
     category: 'Seguridad', 
     icon: Shield,
     color: 'from-slate-500 to-slate-600',
@@ -138,7 +138,7 @@ const CAPABILITIES = [
       'Auditoría inmutable de eventos',
       'Encriptación AES-256 en reposo',
       'TLS 1.3 en tránsito',
-      'ISO 27001, SOC 2 Type II'
+      'SOC 2 Type II'
     ]
   },
 ] as const;
@@ -367,7 +367,7 @@ export function PlatformArchitecture({ className = '' }: PlatformArchitecturePro
                   <Shield className="w-7 h-7" aria-hidden="true" />
                 </div>
                 <h4 className="font-semibold text-surface-950 dark:text-white mb-2">Compliance ready</h4>
-                <p className="text-sm text-surface-600 dark:text-surface-400">ISO 27001, SOC 2, GDPR, LGPD, Ley 27.444</p>
+                <p className="text-sm text-surface-600 dark:text-surface-400">SOC 2, GDPR, LGPD, Ley 27.444</p>
               </div>
             </div>
           </div>

@@ -11,7 +11,7 @@ interface FinalCTAProps {
 }
 
 const TRUST_INDICATORS = [
-  { icon: Shield, label: 'Seguridad empresarial', desc: 'ISO 27001, SOC 2, GDPR' },
+  { icon: Shield, label: 'Seguridad empresarial', desc: 'SOC 2, GDPR' },
   { icon: CheckCircle, label: 'Cumplimiento normativo', desc: 'Ley 27.444, Basel III, LGPD' },
   { icon: Clock, label: 'Implementación en semanas', desc: 'No meses ni años' },
 ] as const;

@@ -1,15 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { ProcessScene } from './ProcessScene/ProcessScene';
 import { useReducedMotion } from '../../hooks';
 
-interface HeroProps {
-  onCtaClick: (sectionId: string) => void;
-}
-
-export function Hero({ onCtaClick }: HeroProps) {
+export function Hero() {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -55,36 +51,6 @@ export function Hero({ onCtaClick }: HeroProps) {
             >
               No vendemos software genérico. Construimos soluciones únicas para tus desafíos, usando nuestra plataforma BPM propietaria y 30+ años de experiencia como base tecnológica.
             </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 mt-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.4 }}
-            >
-              <motion.button
-                onClick={() => onCtaClick('contact')}
-                className="btn-primary group w-full sm:w-auto text-base px-7 py-3.5"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Agendar una conversación
-                <motion.span
-                  className="transition-transform group-hover:translate-x-1"
-                  whileHover={{ x: 4 }}
-                >
-                  <ArrowRight className="w-5 h-5" aria-hidden="true" />
-                </motion.span>
-              </motion.button>
-              <motion.button
-                onClick={() => onCtaClick('platform')}
-                className="btn-secondary w-full sm:w-auto text-base px-7 py-3.5"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Ver la plataforma
-              </motion.button>
-            </motion.div>
           </motion.div>
 
           <motion.div

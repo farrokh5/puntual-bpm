@@ -43,7 +43,6 @@ export const NAV_ITEMS = [
   { label: 'El desafío', href: '#problem-story' },
   { label: 'Plataforma', href: '#platform' },
   { label: 'Cómo trabajamos', href: '#process' },
-  { label: 'Casos de éxito', href: '#cases' },
   { label: 'Por qué Puntual', href: '#why-puntual' },
 ] as const;
 
@@ -259,7 +258,7 @@ export const PLATFORM_CAPABILITIES = [
   {
     id: 'security',
     title: 'Seguridad Empresarial',
-    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo, certificación ISO 27001.',
+    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo.',
     category: 'Seguridad',
     icon: 'shield',
   },

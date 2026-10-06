@@ -5,14 +5,13 @@ import { Hero } from './components/Hero/Hero';
 import { ProblemStory } from './components/ProblemStory/ProblemStory';
 import { PlatformShowcase } from './components/PlatformShowcase/PlatformShowcase';
 import { Methodology } from './components/Methodology/Methodology';
-import { CaseStudies } from './components/CaseStudies/CaseStudies';
 import { WhyPuntual } from './components/WhyPuntual/WhyPuntual';
 import { FinalCTA } from './components/FinalCTA/FinalCTA';
 import { ScheduleCallForm } from './components/ScheduleCallForm/ScheduleCallForm';
 import { Footer } from './components/Footer/Footer';
 import { useActiveSection } from './hooks';
 
-const SECTION_IDS = ['hero', 'video-explanation', 'problem-story', 'platform', 'process', 'cases', 'why-puntual', 'contact', 'schedule-call'];
+const SECTION_IDS = ['hero', 'video-explanation', 'problem-story', 'platform', 'process', 'why-puntual', 'contact', 'schedule-call'];
 
 const LazyVideoSection = React.lazy(() =>
   import('./components/VideoSection/VideoSection').then((m) => ({ default: m.VideoSection }))
@@ -62,14 +61,13 @@ function App() {
       />
 
       <main id="main-content" className="pt-16">
-        <Hero onCtaClick={handlePrimaryCtaClick} />
+        <Hero />
         <React.Suspense fallback={<div className="section bg-surface-50 dark:bg-surface-900/50 min-h-[400px]" aria-hidden="true" />}>
           <LazyVideoSection />
         </React.Suspense>
         <ProblemStory />
         <PlatformShowcase />
         <Methodology />
-        <CaseStudies />
         <WhyPuntual />
         <FinalCTA
           onPrimaryCtaClick={handlePrimaryCtaClick}

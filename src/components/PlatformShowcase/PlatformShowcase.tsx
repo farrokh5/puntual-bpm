@@ -1,10 +1,10 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { 
   GitBranch, Layout, Scale, Link2, CheckSquare, BarChart2, FileText, Shield, 
-  Sparkles, ChevronRight, ChevronLeft, ExternalLink, Check 
+  Sparkles, ChevronRight, ChevronLeft, Check 
 } from 'lucide-react';
 import { useReducedMotion } from '../../hooks';
 
@@ -128,7 +128,7 @@ const CAPABILITIES = [
   { 
     id: 'security', 
     title: 'Seguridad Empresarial', 
-    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo, certificación ISO 27001.',
+    description: 'RBAC granular, SSO (SAML/OIDC), auditoría completa, encriptación en tránsito/reposo.',
     category: 'Seguridad', 
     icon: Shield,
     color: 'from-slate-500 to-slate-600',
@@ -138,7 +138,7 @@ const CAPABILITIES = [
       'Auditoría inmutable de eventos',
       'Encriptación AES-256 en reposo',
       'TLS 1.3 en tránsito',
-      'ISO 27001, SOC 2 Type II'
+      'SOC 2 Type II'
     ]
   },
 ] as const;
@@ -158,7 +158,7 @@ const PLATFORM_ARCHITECTURE = [
   { icon: Sparkles, title: 'Multi-tenant nativo', desc: 'Aislamiento completo de datos y configuración por cliente', color: 'from-brand-500 to-brand-600' },
   { icon: BarChart2, title: 'Cloud-agnostic', desc: 'AWS, Azure, GCP, on-premise o híbrido', color: 'from-emerald-500 to-teal-500' },
   { icon: Link2, title: 'API-first', desc: 'Todo expuesto via REST/GraphQL para integración total', color: 'from-violet-500 to-purple-500' },
-  { icon: Shield, title: 'Compliance ready', desc: 'ISO 27001, SOC 2, GDPR, LGPD, Ley 27.444', color: 'from-amber-500 to-orange-500' },
+  { icon: Shield, title: 'Compliance ready', desc: 'SOC 2, GDPR, LGPD, Ley 27.444', color: 'from-amber-500 to-orange-500' },
 ] as const;
 
 export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
@@ -202,49 +202,6 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
           <p className="body-lg mt-4 text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
             Procesos, decisiones, integraciones y datos conectados en una plataforma diseñada para acelerar el desarrollo de software a medida.
           </p>
-        </motion.div>
-
-        {/* Large Product Visual Area */}
-        <motion.div
-          className="relative mb-16 lg:mb-24 rounded-2xl overflow-hidden bg-surface-950 border border-surface-800"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: reducedMotion ? 0 : 0.8, delay: 0.2 }}
-        >
-          <div className="aspect-video relative">
-            {/* Product screenshot placeholder - replace with real screenshot */}
-            <div className="absolute inset-0 bg-gradient-to-br from-surface-900 via-surface-950 to-violet-950/20" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative z-10 text-center p-8 max-w-4xl">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-brand-500 to-violet-600 flex items-center justify-center">
-                  <GitBranch className="w-10 h-10 text-white" aria-hidden="true" />
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-semibold text-white mb-3">Diseñador de Procesos BPMN 2.0</h3>
-                <p className="text-white/70 max-w-lg mx-auto mb-8">Modela, ejecuta y monitorea procesos complejos con una interfaz visual diseñada para arquitectos y analistas de negocio.</p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <span className="px-4 py-1.5 text-sm bg-white/10 border border-white/20 rounded-full">Arrastra y suelta</span>
-                  <span className="px-4 py-1.5 text-sm bg-white/10 border border-white/20 rounded-full">Validación en vivo</span>
-                  <span className="px-4 py-1.5 text-sm bg-white/10 border border-white/20 rounded-full">Simulación</span>
-                  <span className="px-4 py-1.5 text-sm bg-white/10 border border-white/20 rounded-full">Versionado</span>
-                </div>
-              </div>
-            </div>
-            {/* Floating UI preview cards */}
-            <div className="absolute bottom-6 left-6 right-6 flex flex-wrap justify-center gap-4" aria-hidden="true">
-              {['Modelador', 'Formularios', 'Reglas DMN', 'Dashboard'].map((label, i) => (
-                <motion.div
-                  key={label}
-                  className="w-40 h-24 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 text-sm font-medium"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.5 + i * 0.1 }}
-                >
-                  {label}
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
         {/* Category Filter */}
@@ -321,16 +278,18 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
               </div>
 
               {/* Expanded Details */}
-              <motion.div
-                id={`capability-${cap.id}-details`}
-                className="absolute inset-0 bg-white dark:bg-surface-950 z-20 p-6 overflow-y-auto border-t border-surface-200 dark:border-surface-800"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: reducedMotion ? 0 : 0.3 }}
-                role="region"
-                aria-label={`Detalles de ${cap.title}`}
-              >
+              <AnimatePresence>
+                {selectedCapability === cap.id && (
+                  <motion.div
+                    id={`capability-${cap.id}-details`}
+                    className="absolute inset-0 bg-white dark:bg-surface-950 z-20 p-6 overflow-y-auto border-t border-surface-200 dark:border-surface-800"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: reducedMotion ? 0 : 0.3 }}
+                    role="region"
+                    aria-label={`Detalles de ${cap.title}`}
+                  >
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${cap.color}`}>
@@ -363,14 +322,9 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
                     ))}
                   </ul>
                 </div>
-                
-                <div className="mt-6 pt-6 border-t border-surface-200 dark:border-surface-800">
-                  <button className="btn-outline w-full">
-                    Ver documentación técnica
-                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                  </button>
-                </div>
-              </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.article>
           ))}
         </motion.div>
