@@ -15,8 +15,26 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
   const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [showControls, setShowControls] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const wrapperRef = React.useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+
+  React.useEffect(() => {
+    const node = wrapperRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '300px 0px' }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -85,7 +103,7 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
             id="video-heading"
             className="heading-2 mt-4 text-surface-950 dark:text-white"
           >
-            ¿Qué es un BPM y por qué lo necesitas?
+            ¿Qué es BPM?
           </h2>
           <p className="body-lg mt-4 text-surface-600 dark:text-surface-300">
             En menos de 3 minutos te explicamos cómo la gestión de procesos transforma la operación de tu organización.
@@ -99,10 +117,10 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: reducedMotion ? 0 : 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <div className="relative aspect-video">
+          <div className="relative aspect-video" ref={wrapperRef}>
             <video
               ref={videoRef}
-              src={videoUrl}
+              src={isInView ? videoUrl : undefined}
               className="w-full h-full object-cover"
               muted={isMuted}
               playsInline
@@ -110,7 +128,7 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
               onTimeUpdate={handleTimeUpdate}
               onClick={togglePlay}
               poster=""
-              preload="metadata"
+              preload="none"
             />
 
             {!isPlaying && (
