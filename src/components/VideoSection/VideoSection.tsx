@@ -101,7 +101,7 @@ export function VideoSection({ className = '' }: VideoSectionProps) {
             ¿Qué es BPM?
           </h2>
           <p className="body-lg mt-4 text-surface-600 dark:text-surface-300">
-            En menos de 3 minutos te explicamos cómo la gestión de procesos transforma la operación de tu organización.
+            En un minuto te explicamos cómo la gestión de procesos transforma la operación de tu organización.
           </p>
         </motion.div>
 

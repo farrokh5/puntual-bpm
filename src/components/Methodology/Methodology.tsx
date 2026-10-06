@@ -109,7 +109,7 @@ function MethodologyStep({
           animate={{ scale: 1 }}
           transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.6 + index * 0.12 }}
         >
-          <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${accentColor.split(' ')[0]}, ${accentColor.split(' ')[2]})` }}>
+          <div className={`w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-gradient-to-br text-white ${accentColor}`}>
             <span className="font-display text-2xl lg:text-3xl font-bold">{stage.number}</span>
           </div>
         </motion.div>
@@ -125,7 +125,7 @@ function MethodologyStep({
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-900/30 text-brand-700 dark:text-brand-300 text-xs font-medium border border-brand-200 dark:border-brand-800">
             Paso {stage.number}
           </span>
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${accentColor.split(' ')[0]}, ${accentColor.split(' ')[2]})` }}>
+          <div className={`w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${accentColor}`}>
             <IconComponent className="w-5 h-5" aria-hidden="true" />
           </div>
         </div>

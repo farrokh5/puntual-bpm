@@ -301,7 +301,7 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
               
               <div className="relative z-10 flex flex-col h-full">
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${cap.color.split(' ')[0]}, ${cap.color.split(' ')[2]})` }}>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${cap.color}`}>
                     <cap.icon className="w-6 h-6" aria-hidden="true" />
                   </div>
                   <span className="label">{cap.category}</span>
@@ -333,7 +333,7 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
               >
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${cap.color.split(' ')[0]}, ${cap.color.split(' ')[2]})` }}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${cap.color}`}>
                       <cap.icon className="w-6 h-6" aria-hidden="true" />
                     </div>
                     <div>
@@ -397,7 +397,7 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
                   viewport={{ once: true }}
                   transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.7 + index * 0.1 }}
                 >
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${item.color.split(' ')[0]}, ${item.color.split(' ')[2]})` }}>
+                  <div className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${item.color}`}>
                     <item.icon className="w-7 h-7" aria-hidden="true" />
                   </div>
                   <h4 className="font-semibold text-surface-950 dark:text-white mb-2">{item.title}</h4>

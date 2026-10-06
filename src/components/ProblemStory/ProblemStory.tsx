@@ -9,38 +9,38 @@ import {
 } from 'lucide-react';
 
 const BPM_STEPS = [
-  { id: 'start', label: 'Inicio', icon: 'circle', color: 'from-emerald-500 to-teal-500', desc: 'Disparador del proceso' },
-  { id: 'task', label: 'Tarea humana', icon: 'user', color: 'from-brand-500 to-brand-600', desc: 'Persona ejecuta trabajo' },
-  { id: 'decision', label: 'Decisión', icon: 'diamond', color: 'from-amber-500 to-orange-500', desc: 'Regla de negocio evalúa' },
-  { id: 'auto', label: 'Automatismo', icon: 'zap', color: 'from-violet-500 to-purple-500', desc: 'Sistema ejecuta acción' },
-  { id: 'integration', label: 'Integración', icon: 'link', color: 'from-cyan-500 to-blue-500', desc: 'Conecta con sistemas' },
-  { id: 'end', label: 'Fin', icon: 'circle', color: 'from-rose-500 to-pink-500', desc: 'Proceso completado' },
+  { id: 'start', label: 'Inicio', icon: 'circle', from: '#10b981', to: '#0d9488', desc: 'Disparador del proceso' },
+  { id: 'task', label: 'Tarea humana', icon: 'user', from: '#637bf0', to: '#4f5de5', desc: 'Persona ejecuta trabajo' },
+  { id: 'decision', label: 'Decisión', icon: 'diamond', from: '#f59e0b', to: '#f97316', desc: 'Regla de negocio evalúa' },
+  { id: 'auto', label: 'Automatismo', icon: 'zap', from: '#8b5cf6', to: '#9333ea', desc: 'Sistema ejecuta acción' },
+  { id: 'integration', label: 'Integración', icon: 'link', from: '#06b6d4', to: '#3b82f6', desc: 'Conecta con sistemas' },
+  { id: 'end', label: 'Fin', icon: 'circle', from: '#f43f5e', to: '#ec4899', desc: 'Proceso completado' },
 ] as const;
 
 const STEP_ICONS = {
   circle: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <circle cx="12" cy="12" r="10" />
     </svg>
   ),
   user: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
       <circle cx="12" cy="7" r="4" />
     </svg>
   ),
   diamond: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path d="M12 2L2 12l10 10 10-10-10-10Z" />
     </svg>
   ),
   zap: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
     </svg>
   ),
   link: (
-    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <svg className="w-full h-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
       <path d="M13.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8.5M10 3v4M3 10h4M17 21h4v-4M21 17h-4" />
     </svg>
   ),
@@ -107,14 +107,14 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
                   transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.2 + index * 0.1 }}
                 >
                   {/* Step Node */}
-                  <div className="relative w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center bg-gradient-to-br text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${step.color.split(' ')[0]}, ${step.color.split(' ')[2]})` }}>
-                    <span className="text-3xl font-display font-bold">{index + 1}</span>
+                  <div className="relative w-24 h-24 lg:w-28 lg:h-28 rounded-2xl flex items-center justify-center text-white shadow-lg" style={{ background: `linear-gradient(135deg, ${step.from}, ${step.to})` }}>
+                    <span className="block w-10 h-10 lg:w-12 lg:h-12">{STEP_ICONS[step.icon as keyof typeof STEP_ICONS]}</span>
                   </div>
                   
                   {/* Icon Badge */}
                   <div className="absolute -top-3 -right-3 w-14 h-14 lg:w-16 lg:h-16 rounded-xl bg-white dark:bg-surface-900 border-2 border-surface-200 dark:border-surface-700 flex items-center justify-center shadow-md">
-                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-lg flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${step.color.split(' ')[0]}, ${step.color.split(' ')[2]})` }}>
-                      {STEP_ICONS[step.icon as keyof typeof STEP_ICONS]}
+                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-lg flex items-center justify-center text-white" style={{ background: `linear-gradient(135deg, ${step.from}, ${step.to})` }}>
+                      <span className="text-lg lg:text-xl font-display font-bold">{index + 1}</span>
                     </div>
                   </div>
                   
@@ -149,13 +149,13 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
                   viewport={{ once: true }}
                   transition={{ duration: reducedMotion ? 0 : 0.4, delay: 0.2 + index * 0.08 }}
                 >
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${step.color.split(' ')[0]}, ${step.color.split(' ')[2]})` }}>
-                    <span className="text-xl font-display font-bold">{index + 1}</span>
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-white" style={{ background: `linear-gradient(135deg, ${step.from}, ${step.to})` }}>
+                    <span className="block w-7 h-7">{STEP_ICONS[step.icon as keyof typeof STEP_ICONS]}</span>
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <div className="w-8 h-8 rounded-lg flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${step.color.split(' ')[0]}, ${step.color.split(' ')[2]})` }}>
-                        {STEP_ICONS[step.icon as keyof typeof STEP_ICONS]}
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center text-white" style={{ background: `linear-gradient(135deg, ${step.from}, ${step.to})` }}>
+                        <span className="text-sm font-display font-bold">{index + 1}</span>
                       </div>
                       <h4 className="font-semibold text-surface-950 dark:text-white">{step.label}</h4>
                     </div>

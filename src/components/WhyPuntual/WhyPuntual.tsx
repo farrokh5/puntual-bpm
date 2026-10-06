@@ -203,7 +203,7 @@ export function WhyPuntual({ className = '' }: { className?: string }) {
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-brand-500/5 to-violet-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true" />
                   <div className="relative z-10 flex flex-col h-full">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white mb-4" style={{ background: `linear-gradient(135deg, ${accentColor.split(' ')[0]}, ${accentColor.split(' ')[2]})` }}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br text-white mb-4 ${accentColor}`}>
                       <IconComponent className="w-6 h-6" aria-hidden="true" />
                     </div>
                     <h3 className="heading-4 text-surface-950 dark:text-white mb-2">
@@ -274,7 +274,7 @@ export function WhyPuntual({ className = '' }: { className?: string }) {
               viewport={{ once: true }}
               transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.8 + index * 0.1 }}
             >
-              <div className="w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br text-white" style={{ background: `linear-gradient(135deg, ${benefit.color.split(' ')[0]}, ${benefit.color.split(' ')[2]})` }}>
+              <div className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${benefit.color}`}>
                 <benefit.icon className="w-7 h-7" aria-hidden="true" />
               </div>
               <h4 className="font-semibold text-surface-950 dark:text-white mb-2">{benefit.title}</h4>
