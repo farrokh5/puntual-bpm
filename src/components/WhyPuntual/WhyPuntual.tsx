@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 import { BUSINESS_OUTCOMES } from '../../constants';
 import { useReducedMotion } from '../../hooks';
 import { 
-  X, Check, Zap, Shield, Clock, Users, Code, Layers, 
-  BarChart2, Link2, RefreshCw, ChevronRight 
+  X, Check, Zap, Shield, Users, Code, Layers, 
+  BarChart2, Link2, RefreshCw 
 } from 'lucide-react';
 
 const COMPARISON_POINTS = [
@@ -225,13 +225,9 @@ export function WhyPuntual({ className = '' }: { className?: string }) {
             viewport={{ once: true }}
             transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.7 }}
           >
-            <p className="body-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto mb-6">
+            <p className="body-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
               Cada capacidad técnica de Puntual BPM está diseñada para resolver un problema de negocio real.
             </p>
-            <motion.button className="btn-outline" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-              Ver cómo aplica a tu caso
-              <ChevronRight className="w-4 h-4" aria-hidden="true" />
-            </motion.button>
           </motion.div>
         </motion.div>
 
@@ -251,36 +247,6 @@ export function WhyPuntual({ className = '' }: { className?: string }) {
               La personalización está en la solución. La complejidad tecnológica ya está resuelta en el core.
             </p>
           </div>
-        </motion.div>
-
-        {/* Additional Trust Signals */}
-        <motion.div
-          className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: reducedMotion ? 0 : 0.6, delay: 0.7 }}
-        >
-          {[
-            { icon: Clock, title: 'Time-to-value', desc: 'Primera entrega funcional en 6-8 semanas', color: 'from-yellow-500 to-orange-500' },
-            { icon: Shield, title: 'Riesgo controlado', desc: 'Core probado en 500+ proyectos críticos', color: 'from-emerald-500 to-teal-500' },
-            { icon: Layers, title: 'Evolución continua', desc: 'Cambios en reglas y flujos en horas, no meses', color: 'from-violet-500 to-purple-500' },
-          ].map((benefit, index) => (
-            <motion.div
-              key={benefit.title}
-              className="card-elevated p-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.8 + index * 0.1 }}
-            >
-              <div className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center bg-gradient-to-br text-white ${benefit.color}`}>
-                <benefit.icon className="w-7 h-7" aria-hidden="true" />
-              </div>
-              <h4 className="font-semibold text-surface-950 dark:text-white mb-2">{benefit.title}</h4>
-              <p className="text-sm text-surface-600 dark:text-surface-400">{benefit.desc}</p>
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>

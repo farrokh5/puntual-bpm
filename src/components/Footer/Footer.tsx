@@ -48,9 +48,9 @@ export function Footer({ className = '' }: FooterProps) {
       role="contentinfo"
     >
       <div className="container py-12 lg:py-16">
-        <div className="grid lg:grid-cols-6 gap-8 lg:gap-10 mb-12">
+        <div className="grid lg:grid-cols-4 gap-8 lg:gap-10 mb-12">
           <motion.div
-            className="lg:col-span-2 max-w-xs"
+            className="lg:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -65,7 +65,7 @@ export function Footer({ className = '' }: FooterProps) {
               </div>
               <span className="font-display text-xl font-bold text-white">{COMPANY_INFO.name}</span>
             </div>
-            <p className="body text-surface-400 mb-6 max-w-xs">
+            <p className="body text-surface-400 mb-6 max-w-md">
               {COMPANY_INFO.description}
             </p>
             <div className="flex gap-3">
@@ -131,24 +131,6 @@ export function Footer({ className = '' }: FooterProps) {
               ))}
             </ul>
           </motion.nav>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: reducedMotion ? 0 : 0.5, delay: 0.3 }}
-          >
-            <h3 className="font-semibold text-white mb-4">Contacto</h3>
-            <address className="not-italic space-y-3 text-surface-400">
-              <p>{COMPANY_INFO.location}</p>
-              <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-white transition-colors">
-                {COMPANY_INFO.email}
-              </a>
-              <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-white transition-colors">
-                {COMPANY_INFO.phone}
-              </a>
-            </address>
-          </motion.div>
         </div>
 
         <motion.div
@@ -162,7 +144,7 @@ export function Footer({ className = '' }: FooterProps) {
             © {currentYear} {COMPANY_INFO.name}. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-surface-500">
-            <span>Fundada en {COMPANY_INFO.founded} · Hecho con precisión en Argentina</span>
+            <span>Fundada en {COMPANY_INFO.founded} · Hecho con precisión en México</span>
             <motion.div className="w-3 h-3 rounded-full bg-brand-500 animate-pulse-slow" aria-label="Latido" />
           </div>
         </motion.div>

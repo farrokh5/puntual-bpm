@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import { BUSINESS_OUTCOMES } from '../../constants';
 import { useReducedMotion } from '../../hooks';
 import { 
-  Zap, BarChart2, Shield, CheckCircle, Link2, RefreshCw,
-  ChevronRight
+  Zap, BarChart2, Shield, CheckCircle, Link2, RefreshCw
 } from 'lucide-react';
 
 interface BusinessOutcomesProps {
@@ -102,17 +101,9 @@ export function BusinessOutcomes({ className = '' }: BusinessOutcomesProps) {
             <h3 className="heading-3 text-surface-950 dark:text-white mb-4">
               Cada capacidad técnica está diseñada para resolver un problema de negocio real
             </h3>
-            <p className="body-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto mb-8">
+            <p className="body-lg text-surface-600 dark:text-surface-300 max-w-2xl mx-auto">
               No implementamos tecnología por tecnología. Cada feature de Puntual BPM nace de una necesidad real de nuestros clientes en 30 años de proyectos.
             </p>
-            <motion.button
-              className="btn-primary"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Ver cómo aplica a tu caso
-              <ChevronRight className="w-4 h-4" aria-hidden="true" />
-            </motion.button>
           </div>
         </motion.div>
       </div>

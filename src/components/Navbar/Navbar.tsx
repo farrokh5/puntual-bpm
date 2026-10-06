@@ -115,7 +115,7 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.3, delay: 0.2 }}
             >
-              Agendar conversación
+              Contactanos
             </motion.button>
           </div>
 
@@ -165,7 +165,7 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.15 }}
                 >
-                  Agendar conversación
+                  Contactanos
                 </motion.button>
               </div>
             </motion.div>

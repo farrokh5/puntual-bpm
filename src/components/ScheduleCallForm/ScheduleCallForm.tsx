@@ -58,6 +58,7 @@ export function ScheduleCallForm({
 
   return (
     <motion.div
+      id="contact"
       className="max-w-lg mx-auto p-6 lg:p-8 bg-white dark:bg-surface-900 rounded-2xl border border-surface-200 dark:border-surface-800 shadow-xl"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -73,7 +74,7 @@ export function ScheduleCallForm({
           </svg>
         </div>
         <h2 className="heading-4 text-surface-950 dark:text-white mb-2">
-          Agendar una llamada
+          Contactanos
         </h2>
         <p className="body-sm text-surface-600 dark:text-surface-400">
           Te contactamos en menos de 24hs para coordinar
@@ -183,7 +184,7 @@ export function ScheduleCallForm({
               Enviado
             </>
           ) : (
-            'Agendar llamada'
+            'Enviar'
           )}
         </button>
       </form>

@@ -6,12 +6,11 @@ import { ProblemStory } from './components/ProblemStory/ProblemStory';
 import { PlatformShowcase } from './components/PlatformShowcase/PlatformShowcase';
 import { Methodology } from './components/Methodology/Methodology';
 import { WhyPuntual } from './components/WhyPuntual/WhyPuntual';
-import { FinalCTA } from './components/FinalCTA/FinalCTA';
 import { ScheduleCallForm } from './components/ScheduleCallForm/ScheduleCallForm';
 import { Footer } from './components/Footer/Footer';
 import { useActiveSection } from './hooks';
 
-const SECTION_IDS = ['hero', 'video-explanation', 'problem-story', 'platform', 'process', 'why-puntual', 'contact', 'schedule-call'];
+const SECTION_IDS = ['hero', 'video-explanation', 'problem-story', 'platform', 'process', 'why-puntual', 'contact'];
 
 const LazyVideoSection = React.lazy(() =>
   import('./components/VideoSection/VideoSection').then((m) => ({ default: m.VideoSection }))
@@ -30,14 +29,6 @@ function App() {
       setActiveSection(sectionId);
     }
   }, []);
-
-  const handlePrimaryCtaClick = useCallback((sectionId: string) => {
-    handleNavigate(sectionId);
-  }, [handleNavigate]);
-
-  const handleSecondaryCtaClick = useCallback(() => {
-    handleNavigate('contact');
-  }, [handleNavigate]);
 
   React.useEffect(() => {
     setActiveSection(trackedActiveSection);
@@ -69,10 +60,6 @@ function App() {
         <PlatformShowcase />
         <Methodology />
         <WhyPuntual />
-        <FinalCTA
-          onPrimaryCtaClick={handlePrimaryCtaClick}
-          onSecondaryCtaClick={handleSecondaryCtaClick}
-        />
         <ScheduleCallForm />
       </main>
 

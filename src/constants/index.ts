@@ -40,6 +40,7 @@ export type { CaseStudy as CaseStudyType };
 
 export const NAV_ITEMS = [
   { label: 'Inicio', href: '#hero' },
+  { label: '¿Qué es BPM?', href: '#video-explanation' },
   { label: 'El desafío', href: '#problem-story' },
   { label: 'Plataforma', href: '#platform' },
   { label: 'Cómo trabajamos', href: '#process' },
@@ -276,54 +277,6 @@ export const INTEGRATION_TECHNOLOGIES = [
   { label: 'Message Queues', category: 'Mensajería' },
 ] as const;
 
-export const CASE_STUDIES = [
-  {
-    id: 'banking-core',
-    industry: 'Banca',
-    title: 'Core Bancario Modular',
-    challenge: 'Banco top 5 necesitaba reemplazar legado mainframe por arquitectura modular sin interrumpir operaciones críticas.',
-    solution: 'Desarrollo por capas usando Puntual BPM para orquestación de transacciones, integración con 40+ sistemas externos.',
-    architecture: 'Microservicios orquestados por Puntual BPM. Capa de API Gateway. Event-driven con Kafka. Deploy en Kubernetes.',
-    results: [
-      { metric: '99.99%', label: 'Disponibilidad' },
-      { metric: '40+', label: 'Integraciones activas' },
-      { metric: '-60%', label: 'Tiempo de deployment' },
-      { metric: 'Basel III', label: 'Cumplimiento normativo' },
-    ],
-    techStack: ['Puntual BPM', 'Java/Kotlin', 'PostgreSQL', 'Kubernetes', 'Kafka'],
-  },
-  {
-    id: 'insurance-claims',
-    industry: 'Seguros',
-    title: 'Automatización de Siniestros',
-    challenge: 'Aseguradora líder procesaba 15k siniestros/mes manualmente. Tiempos de 14 días, alta tasa de error y papel.',
-    solution: 'Workflow end-to-end con reglas de negocio, peritos móviles, integración talleres y pagos automáticos.',
-    architecture: 'App móvil React Native para peritos. Motor de reglas DMN para evaluación automática. Integración core bancario para pagos.',
-    results: [
-      { metric: '-85%', label: 'Tiempo de procesamiento' },
-      { metric: '-40%', label: 'Costos operativos' },
-      { metric: '+35 pts', label: 'NPS clientes' },
-      { metric: '0', label: 'Papel' },
-    ],
-    techStack: ['Puntual BPM', 'React Native', 'Azure', 'Power BI'],
-  },
-  {
-    id: 'govt-procurement',
-    industry: 'Gobierno',
-    title: 'Compras Públicas Transparentes',
-    challenge: 'Entidad estatal requería portal de licitaciones con trazabilidad total, firmas digitales y auditoría ciudadana.',
-    solution: 'Plataforma multi-tenant con workflows configurables, blockchain para inmutabilidad, portal ciudadano.',
-    architecture: 'Arquitectura multi-tenant. Blockchain para registro inmutable de actos. Portal público con trazabilidad completa.',
-    results: [
-      { metric: '100%', label: 'Trazabilidad de actos' },
-      { metric: '-70%', label: 'Tiempo de adjudicación' },
-      { metric: 'Ley 27.444', label: 'Cumplimiento legal' },
-      { metric: 'Premio', label: 'Innovación pública' },
-    ],
-    techStack: ['Puntual BPM', 'Blockchain', 'React', 'PostgreSQL', 'Docker'],
-  },
-] as const;
-
 export const BUSINESS_OUTCOMES = [
   {
     id: 'speed',
@@ -359,20 +312,13 @@ export const BUSINESS_OUTCOMES = [
 
 export const FOOTER_LINKS = {
   solutions: [
-    { label: 'Desarrollo a medida', href: '#offer' },
+    { label: '¿Qué es BPM?', href: '#video-explanation' },
     { label: 'Plataforma Puntual BPM', href: '#platform' },
     { label: 'Automatización', href: '#process' },
-    { label: 'Integraciones', href: '#technology' },
   ],
   company: [
-    { label: 'Nosotros', href: '#about' },
-    { label: 'Experiencia', href: '#experience' },
-    { label: 'Casos de éxito', href: '#cases' },
+    { label: 'Por qué Puntual', href: '#why-puntual' },
     { label: 'Contacto', href: '#contact' },
-  ],
-  legal: [
-    { label: 'Aviso de privacidad', href: '#privacy' },
-    { label: 'Términos y condiciones', href: '#terms' },
   ],
 } as const;
 
@@ -380,8 +326,8 @@ export const COMPANY_INFO = {
   name: 'Puntual BPM',
   tagline: 'Software a medida para procesos complejos.',
   description: 'Combinamos desarrollo a medida, automatización de procesos y una plataforma tecnológica propia para convertir desafíos operativos en soluciones escalables.',
-  founded: 1994,
-  location: 'Buenos Aires, Argentina',
+  founded: 2002,
+  location: 'CDMX, México',
   email: 'hola@puntualbpm.com',
   phone: '+54 11 4000 0000',
 } as const;
