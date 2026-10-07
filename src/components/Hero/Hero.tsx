@@ -39,7 +39,7 @@ export function Hero() {
               id="hero-title"
               className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-bold tracking-[-0.03em] leading-[1.02] text-surface-950 dark:text-white text-balance mt-6"
             >
-              <span className="block">Desarrollo a medida.</span>
+              <span className="block">Desarrollo a la medida.</span>
               <span className="block bg-gradient-to-r from-brand-600 via-brand-500 to-violet-600 bg-clip-text text-transparent">Puntual BPM como core.</span>
             </h1>
 
