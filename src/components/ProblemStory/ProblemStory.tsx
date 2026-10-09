@@ -96,7 +96,7 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
             {/* Connecting flow line */}
             <div className="hidden lg:block absolute top-12 left-20 right-20 h-0.5 bg-gradient-to-r from-transparent via-surface-300 dark:via-surface-700 to-transparent" aria-hidden="true" />
             
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-4 px-4">
+            <div className="hidden lg:flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-4 px-4">
               {BPM_STEPS.map((step, index) => (
                 <motion.div
                   key={step.id}
