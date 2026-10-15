@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { PROBLEMS, SOLUTION_PILLARS } from '../../constants';
 import { useReducedMotion } from '../../hooks';
 import { 
-  GitBranch, Scale, BarChart2, Link2, ChevronRight 
+  GitBranch, Scale, BarChart2, Link2 
 } from 'lucide-react';
 
 const BPM_STEPS = [
@@ -100,7 +100,7 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
               {BPM_STEPS.map((step, index) => (
                 <motion.div
                   key={step.id}
-                  className="relative flex flex-col items-center z-10"
+                  className="relative flex flex-col items-center z-10 min-w-0"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -119,7 +119,7 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
                   </div>
                   
                   {/* Label & Description */}
-                  <div className="mt-6 text-center w-44 lg:w-52">
+                  <div className="mt-6 text-center w-44 lg:w-52 max-w-full">
                     <h3 className="heading-4 text-surface-950 dark:text-white mb-2">{step.label}</h3>
                     <p className="text-sm text-surface-600 dark:text-surface-400">{step.desc}</p>
                   </div>
@@ -161,7 +161,6 @@ export function ProblemStory({ className = '' }: ProblemStoryProps) {
                     </div>
                     <p className="text-sm text-surface-600 dark:text-surface-400 pl-10">{step.desc}</p>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-surface-400 flex-shrink-0 mt-1" aria-hidden="true" />
                 </motion.div>
               ))}
             </div>

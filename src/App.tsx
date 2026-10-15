@@ -27,6 +27,15 @@ function App() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setActiveSection(sectionId);
+      // Fallback: algunos navegadores móviles no ejecutan el scroll suave;
+      // si a los 700ms no llegamos a la sección, saltamos de forma instantánea.
+      window.setTimeout(() => {
+        if (!element.isConnected) return;
+        const top = element.getBoundingClientRect().top;
+        if (Math.abs(top) > 8 && Math.abs(top) > window.innerHeight * 0.2) {
+          element.scrollIntoView({ block: 'start' });
+        }
+      }, 700);
     }
   }, []);
 

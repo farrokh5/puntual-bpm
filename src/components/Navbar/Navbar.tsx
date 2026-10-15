@@ -81,7 +81,7 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
               <motion.button
                 key={item.label}
                 onClick={() => handleNavClick(item.href)}
-                className={`relative px-4 py-2.5 text-sm font-medium rounded-lg transition-colors ${
+                className={`relative px-2 xl:px-4 py-2.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap ${
                   isActive(item.href)
                     ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30'
                     : 'text-surface-600 dark:text-surface-300 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800'
@@ -135,7 +135,7 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
             <motion.div
               id="mobile-menu"
               className="lg:hidden overflow-hidden border-t border-surface-200 dark:border-surface-800 bg-white dark:bg-surface-950"
-              initial={{ opacity: 0, height: 0 }}
+              initial={{ opacity: 1, height: 'auto' }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: reducedMotion ? 0 : 0.3, ease: 'easeInOut' }}
@@ -150,8 +150,8 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                         ? 'text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/30'
                         : 'text-surface-600 dark:text-surface-300 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800'
                     }`}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.05 }}
                   >
                     {item.label}
@@ -161,8 +161,8 @@ export function Navbar({ activeSection, onNavigate }: NavbarProps) {
                 <motion.button
                   onClick={() => handleNavClick('#contact')}
                   className="w-full btn-primary"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: reducedMotion ? 0 : 0.2, delay: 0.15 }}
                 >
                   Contactanos

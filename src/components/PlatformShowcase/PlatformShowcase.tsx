@@ -158,7 +158,6 @@ const PLATFORM_ARCHITECTURE = [
   { icon: Sparkles, title: 'Multi-tenant nativo', desc: 'Aislamiento completo de datos y configuración por cliente', color: 'from-brand-500 to-brand-600' },
   { icon: BarChart2, title: 'Cloud-agnostic', desc: 'AWS, Azure, GCP, on-premise o híbrido', color: 'from-emerald-500 to-teal-500' },
   { icon: Link2, title: 'API-first', desc: 'Todo expuesto via REST/GraphQL para integración total', color: 'from-violet-500 to-purple-500' },
-  { icon: Shield, title: 'Compliance ready', desc: 'SOC 2, GDPR, LGPD, Ley 27.444', color: 'from-amber-500 to-orange-500' },
 ] as const;
 
 export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
