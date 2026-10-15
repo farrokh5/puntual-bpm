@@ -74,7 +74,7 @@ export function ScheduleCallForm({
           </svg>
         </div>
         <h2 className="heading-4 text-surface-950 dark:text-white mb-2">
-          Contactanos
+          Contáctanos
         </h2>
         <p className="body-sm text-surface-600 dark:text-surface-400">
           Te contactamos en menos de 24hs para coordinar
