@@ -340,7 +340,7 @@ export function PlatformShowcase({ className = '' }: PlatformShowcaseProps) {
             <h3 className="heading-3 text-surface-950 dark:text-white text-center mb-8">
               Arquitectura pensada para escalar
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
               {PLATFORM_ARCHITECTURE.map((item, index) => (
                 <motion.div
                   key={item.title}
